@@ -22,6 +22,7 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/advanced.css">
 </head>
 
 <body>

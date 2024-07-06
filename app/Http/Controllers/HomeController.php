@@ -9,10 +9,8 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index() {
-
-        $categories = ArticleCategory::where('active', true)->get();
         $articles = Article::get();
-        return view('index', compact('categories', 'articles'));
+        return view('index', compact('articles'));
     }
 
     public function about() {

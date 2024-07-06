@@ -11,7 +11,7 @@
 
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="{{route('article.index')}}" id="dropdown05"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Категории</a>
+                aria-haspopup="true" aria-expanded="false">Категории</a>
             <div class="dropdown-menu" aria-labelledby="dropdown05">
                 @foreach ($categories as $category)
                     <a class="dropdown-item" href="{{route('article.category', $category->slug)}}">{{$category->title}}</a>    

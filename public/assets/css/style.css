@@ -1087,6 +1087,7 @@ textarea.form-control {
 .post-entry-horzontal {
   margin-bottom: 30px; }
   .post-entry-horzontal a {
+    width: 100%;
     overflow: hidden;
     display: table;
     position: relative;

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
     public function index() {
-        return 'index article';
+        $articles = Article::where('active', true)->latest('published_at')->paginate(6);
+        return view('article.index', compact('articles'));
     }
 
     public function category($category) {
