@@ -14,14 +14,18 @@ class ArticleController extends Controller
     }
 
     public function category($category) {
-        return 'category article ' . $category;
+        $category = ArticleCategory::where('slug', $category)->firstOrFail();
+        $articles = Article::where('active', true)->where('category_id', $category->id)->latest('published_at')->paginate(6);
+        return view('article.index', compact('articles', 'category'));
     }
 
     public function show($category, $article) {
-        return 'show article ' . $category . ' ' . $article;
+        $article = Article::where('slug', $article)->firstOrFail();
+        return view('article.show', compact('article'));
     }
 
     public function tag($tag) {
-        return 'tag article ' . $tag;
+        $articles = Article::where('active', true)->whereJsonContains('tags', $tag)->latest('published_at')->paginate(6);
+        return view('article.index', compact('articles', 'tag'));
     }
 }

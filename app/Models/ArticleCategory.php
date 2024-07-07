@@ -18,4 +18,12 @@ class ArticleCategory extends Model
     protected $casts = [
         'active' => 'boolean'
     ];
+
+    public function articles() {
+        return $this->hasMany(Article::class, 'category_id');
+    }
+
+    public function getArticlesCountAttribute() {
+        return $this->articles()->count();
+    }
 }

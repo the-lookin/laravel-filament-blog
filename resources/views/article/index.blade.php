@@ -1,11 +1,22 @@
 @extends('layouts.main')
 
 @section('content')
-    {{-- <div class="row mb-4">
-        <div class="col-md-6">
-            <h2 class="mb-4">Category: Food</h2>
+
+    @if (isset($category))
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h2 class="mb-4">Категория: {{ $category->title }}</h2>
+            </div>
         </div>
-    </div> --}}
+    @endif 
+    
+    @if (isset($tag))
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h2 class="mb-4">Тег: {{ $tag }}</h2>
+            </div>
+        </div>
+    @endif  
 
     <div class="row blog-entries">
         <div class="col-md-12 col-lg-8 main-content">

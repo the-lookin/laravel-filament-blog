@@ -4,7 +4,7 @@
             <div class="col-md-4">
                 <h3>О блоге</h3>
                 <p class="mb-4">
-                    <img src="/assets/images/img_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="/assets/images/cartman.png" alt="Image placeholder" class="img-fluid">
                 </p>
 
                 <p>Lorem ipsum dolor sit amet sa ksal sk sa, consectetur adipisicing elit. Ipsa harum inventore
@@ -13,51 +13,25 @@
             <div class="col-md-6 ml-auto">
                 <div class="row">
                     <div class="col-md-7">
-                        <h3>Последние посты</h3>
+                        <h3>Последние статьи</h3>
                         <div class="post-entry-sidebar">
                             <ul>
-                                <li>
-                                    <a href="/assets/">
-                                        <img src="/assets/images/img_6.jpg" alt="Image placeholder"
-                                            class="mr-4">
-                                        <div class="text">
-                                            <h4>How to Find the Video Games of Your Youth</h4>
-                                            <div class="post-meta">
-                                                <span class="mr-2">March 15, 2018 </span> &bullet;
-                                                <span class="ml-2"><span class="fa fa-comments"></span>
-                                                    3</span>
+
+                                @foreach ($latestArticles as $article)
+                                    <li>
+                                        <a href="{{route('article.show', [$article->category->slug, $article->slug])}}">
+                                            <img src="/uploads/{{$article->preview_image}}" alt="{{$article->title}}"
+                                                class="mr-4">
+                                            <div class="text">
+                                                <h4>{{$article->title}}</h4>
+                                                <div class="post-meta">
+                                                    <span class="mr-2">{{ $article->formatted_published_at }} </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/assets/">
-                                        <img src="/assets/images/img_3.jpg" alt="Image placeholder"
-                                            class="mr-4">
-                                        <div class="text">
-                                            <h4>How to Find the Video Games of Your Youth</h4>
-                                            <div class="post-meta">
-                                                <span class="mr-2">March 15, 2018 </span> &bullet;
-                                                <span class="ml-2"><span class="fa fa-comments"></span>
-                                                    3</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/assets/">
-                                        <img src="/assets/images/img_4.jpg" alt="Image placeholder"
-                                            class="mr-4">
-                                        <div class="text">
-                                            <h4>How to Find the Video Games of Your Youth</h4>
-                                            <div class="post-meta">
-                                                <span class="mr-2">March 15, 2018 </span> &bullet;
-                                                <span class="ml-2"><span class="fa fa-comments"></span>
-                                                    3</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
+                                        </a>
+                                    </li>
+                                @endforeach
+                                
                             </ul>
                         </div>
                     </div>
