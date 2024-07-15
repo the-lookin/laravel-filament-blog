@@ -9,10 +9,9 @@
                     <a href="/assets/#"><span class="fa fa-youtube-play"></span></a>
                 </div>
                 <div class="col-3 search-top">
-                    <!-- <a href="/assets/#"><span class="fa fa-search"></span></a> -->
-                    <form action="#" class="search-top-form">
+                    <form action="{{route('article.search')}}" class="search-top-form" method="GET">
                         <span class="icon fa fa-search"></span>
-                        <input type="text" id="s" placeholder="Поиск...">
+                        <input type="text" name="query" placeholder="Поиск...">
                     </form>
                 </div>
             </div>

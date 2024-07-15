@@ -18,6 +18,20 @@
         </div>
     @endif  
 
+    @if (isset($query))
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h2 class="mb-4">Поиск: {{ $query }}</h2>
+            </div>
+        </div>
+    @endif  
+    
+    @if (isset($query) && count($articles) == 0)
+        <div class="not-found">
+            По вашему запросу ничего не найдено
+        </div>
+    @endif    
+
     <div class="row blog-entries">
         <div class="col-md-12 col-lg-8 main-content">
             <div class="row mb-5 mt-5">
