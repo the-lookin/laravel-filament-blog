@@ -7,6 +7,7 @@ use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
 use App\Models\ArticleCategory;
 use Filament\Forms;
+use Filament\Forms\Components\Actions;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -56,6 +57,31 @@ class ArticleResource extends Resource
                 TinyEditor::make('detail_text')->label('Статья')
                     ->required()
                     ->columnSpanFull(),
+
+                Forms\Components\Section::make('Перевод')
+                    ->description('Секция для контента на английском языке')
+                    ->schema([
+                    Forms\Components\TextInput::make('title_en')->label('Название'),
+                    Forms\Components\Textarea::make('preview_text_en')->label('Анонс')->columnSpanFull(),
+                    TinyEditor::make('detail_text_en')->label('Статья')->columnSpanFull(),
+
+                    Actions::make([
+                        Actions\Action::make('translate')
+                        ->label('Автоперевод')
+                        ->icon('heroicon-o-language')
+                        ->action(function (Forms\Contracts\HasForms $livewire) {
+                        
+                            $data = $livewire->form->getState();
+                            
+                            $livewire->form->fill([
+                                ...$data,
+                                'title_en' => \App\Services\TranslateService::aiTranslatedText($data['title']) ,
+                                'preview_text_en' => \App\Services\TranslateService::aiTranslatedText($data['preview_text']),
+                                'detail_text_en' => \App\Services\TranslateService::aiTranslatedText($data['detail_text']),
+                            ]);
+                        }),
+                    ]),
+                ]),
                 Forms\Components\TagsInput::make('tags')->label('Теги'),
 
                 Forms\Components\Select::make('category_id')->label('Категория')
